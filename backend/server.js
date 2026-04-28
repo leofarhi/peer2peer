@@ -20,7 +20,11 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 const UID = process.env.FORTYTWO_CLIENT_ID;
 const SECRET = process.env.FORTYTWO_CLIENT_SECRET;
 const JWT_SECRET = process.env.JWT_SECRET || "secret_par_defaut_a_changer";
-const REDIRECT_URI = `${FRONTEND_URL}/auth/42/callback`;
+
+const isProd = !!process.env.PORT;
+const REDIRECT_URI = isProd 
+    ? `${process.env.FRONTEND_URL}/auth/42/callback` 
+    : "http://localhost:3000/auth/42/callback";
 
 // --- CONSTANTES METIER ---
 const MAX_QUOTA = 30;
@@ -733,10 +737,9 @@ app.post('/api/admin/users/:userId/chat', authenticateToken, requireAdmin, async
 // Dit à Express de servir les fichiers statiques générés par Vite
 app.use(express.static(path.join(__dirname, '../dist')));
 
-// Redirige toutes les autres requêtes vers l'index.html de React (important pour le router)
-app.get('*', (req, res) => {
+// Redirige toutes les autres requêtes vers l'index.html de React (Bypass Express 5 string parser)
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
-
 
 server.listen(PORT, () => { console.log(`✅ Backend lancé sur http://localhost:${PORT}`); });

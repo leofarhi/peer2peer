@@ -3,7 +3,7 @@ import { Button } from '../components/Button';
 import { TRANSLATIONS } from '../constants';
 import { getSession } from '../services/authService';
 import type { Language } from '../types';
-import { BASE_URL } from './constants';
+import { BASE_URL } from '../constants';
 
 const ContactScreen = ({ onBack, lang }: { onBack: () => void, lang: Language }) => {
     const session = getSession();

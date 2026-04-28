@@ -483,7 +483,7 @@ const App: React.FC = () => {
   if (currentView === AppView.LOGIN) {
       return (
         <LoginScreen 
-            onLogin={() => window.location.href = '${BASE_URL}/auth/42'} 
+            onLogin={() => window.location.href = `${BASE_URL}/auth/42`} 
             onContact={handleGoToContact}
             onLegal={handleGoToLegal}
             onPrivacy={handleGoToPrivacy}

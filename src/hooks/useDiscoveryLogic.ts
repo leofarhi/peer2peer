@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import type { UserProfile } from '../types';
-import { BASE_URL } from './constants';
+import { BASE_URL } from '../constants';
 
 export const useDiscoveryLogic = (token: string | null) => {
     const [swipableUsers, setSwipableUsers] = useState<UserProfile[]>([]);

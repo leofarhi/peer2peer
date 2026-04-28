@@ -3,7 +3,7 @@ import { ICEBREAKER_QUESTIONS, IntentDescriptions, TRANSLATIONS } from '../const
 import type { Language, Match, Message, UserProfile } from '../types';
 import { getSession } from '../services/authService';
 import { socketService } from '../services/socket';
-import { BASE_URL } from './constants';
+import { BASE_URL } from '../constants';
 
 const Chat = ({ 
     match, 
